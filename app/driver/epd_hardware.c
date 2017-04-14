@@ -61,6 +61,9 @@ void epdInitHardware(void)
 	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDI_U, 2);
 	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTCK_U, 2);
 	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTMS_U, 2);
+	
+	// TODO: better use the standard spi_master_init function and then platform_spi_select(1, PLATFORM_SPI_SELECT_OFF), when implemented
+	
 #endif
 }
 

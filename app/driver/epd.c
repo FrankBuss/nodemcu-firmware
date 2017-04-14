@@ -210,11 +210,11 @@ static void setTemperatureFactor()
 	if (frameRepeats < 2) frameRepeats = 2;
 }
 
-static void displayStage(uint8_t *picture, uint8_t *colorMask)
+static void displayStage(const uint8_t *picture, uint8_t *colorMask)
 {
 	uint16_t	i,j,k,l;
 	uint8_t		tempByte;
-	uint8_t	*displayOrgPtr = picture;
+	const uint8_t	*displayOrgPtr = picture;
 	for (l = 0; l < frameRepeats; l++) {
 		picture = displayOrgPtr;
 		for (i = 0; i < COG_Parameters[epdType].vertical; i++) {		// for every line
@@ -246,26 +246,26 @@ static void displayStage(uint8_t *picture, uint8_t *colorMask)
 	}
 }
 
-static void displayStage_1 (uint8_t *previousPicture)
+static void displayStage_1 (const uint8_t *previousPicture)
 {
 	uint8_t colorMask[] = { BLACK3, WHITE3, BLACK2, WHITE2, BLACK1, WHITE1, BLACK0, WHITE0 };
 	displayStage(previousPicture, colorMask);
 }
 
-static void displayStage_2 (uint8_t *previousPicture)
+static void displayStage_2 (const uint8_t *previousPicture)
 {
 	uint8_t colorMask[] = { WHITE3, NOTHING, WHITE2, NOTHING, WHITE1, NOTHING, WHITE0, NOTHING };
 	displayStage(previousPicture, colorMask);
 }
 
 
-static void displayStage_3 (uint8_t *picture)
+static void displayStage_3 (const uint8_t *picture)
 {
 	uint8_t colorMask[] = { BLACK3, NOTHING, BLACK2, NOTHING, BLACK1, NOTHING, BLACK0, NOTHING };
 	displayStage(picture, colorMask);
 }
 
-static void displayStage_4 (uint8_t *picture)
+static void displayStage_4 (const uint8_t *picture)
 {
 	uint8_t colorMask[] = { WHITE3, BLACK3, WHITE2, BLACK2, WHITE1, BLACK1, WHITE0, BLACK0 };
 	displayStage(picture, colorMask);
@@ -420,7 +420,7 @@ void epdSetType(EPDType_t type)
 	epdType = type;
 }
 
-void epdShowImage(uint8_t* newImage, uint8_t* previousImage)
+void epdShowImage(const uint8_t* newImage, const uint8_t* previousImage)
 {
 	// always initialize display (has been powered off before)
 	initDisplayHardware();

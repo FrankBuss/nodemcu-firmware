@@ -18,6 +18,6 @@ void epdSetType(EPDType_t type);
 // show an image
 // newImage: black/white pixel data for the new image
 // previousImage: black/white pixel data for the previous image, required to reduce ghosting
-void epdShowImage(uint8_t* newImage, uint8_t* previousImage);
+void epdShowImage(const uint8_t* newImage, const uint8_t* previousImage);
 
 #endif
